@@ -175,6 +175,7 @@ typedef NS_ENUM(NSInteger, ImagePickerClassType) { UIImagePickerClassType, PHPic
 //      [self launchUIImagePickerWithSource:source context:context];
 //    }
 //  } else {
+    NSLog(@"Launching UIImagePicker");
     [self launchUIImagePickerWithSource:source context:context];
 //  }
 }
