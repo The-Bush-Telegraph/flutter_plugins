@@ -136,7 +136,8 @@ typedef NS_ENUM(NSInteger, ImagePickerClassType) { UIImagePickerClassType, PHPic
                                              camera:[self cameraDeviceForSource:source]];
       break;
     case FLTSourceTypeGallery:
-      [self checkPhotoAuthorizationWithImagePicker:imagePickerController];
+      [self showPhotoLibraryWithImagePicker:imagePickerController];
+      //[self checkPhotoAuthorizationWithImagePicker:imagePickerController];
       break;
     default:
       [self sendCallResultWithError:[FlutterError errorWithCode:@"invalid_source"
@@ -167,15 +168,15 @@ typedef NS_ENUM(NSInteger, ImagePickerClassType) { UIImagePickerClassType, PHPic
   context.imageQuality = imageQuality;
   context.maxImageCount = 1;
 
-  if (source.type == FLTSourceTypeGallery) {  // Capture is not possible with PHPicker
-    if (@available(iOS 14, *)) {
-      [self launchPHPickerWithContext:context];
-    } else {
-      [self launchUIImagePickerWithSource:source context:context];
-    }
-  } else {
+//  if (source.type == FLTSourceTypeGallery) {  // Capture is not possible with PHPicker
+//    if (@available(iOS 14, *)) {
+//      [self launchPHPickerWithContext:context];
+//    } else {
+//      [self launchUIImagePickerWithSource:source context:context];
+//    }
+//  } else {
     [self launchUIImagePickerWithSource:source context:context];
-  }
+//  }
 }
 
 - (void)pickMultiImageWithMaxSize:(nonnull FLTMaxSize *)maxSize
