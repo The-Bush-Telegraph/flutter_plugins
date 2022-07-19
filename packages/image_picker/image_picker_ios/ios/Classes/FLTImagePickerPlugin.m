@@ -557,12 +557,13 @@ typedef NS_ENUM(NSInteger, ImagePickerClassType) { UIImagePickerClassType, PHPic
     NSNumber *desiredImageQuality = [self getDesiredImageQuality:imageQuality];
 
     PHAsset *originalAsset = [FLTImagePickerPhotoAssetUtil getAssetFromImagePickerInfo:info];
+    BOOL isMetadataAvailable = [info objectForKey:UIImagePickerControllerMediaMetadata] != nil;
 
     if (maxWidth != nil || maxHeight != nil) {
       image = [FLTImagePickerImageUtil scaledImage:image
                                           maxWidth:maxWidth
                                          maxHeight:maxHeight
-                               isMetadataAvailable:YES];
+                               isMetadataAvailable:isMetadataAvailable];
     }
 
     if (!originalAsset) {
